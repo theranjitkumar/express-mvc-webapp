@@ -2,7 +2,24 @@
 <html>
 
 <head>
-  <title>{{title}}</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>{{meta.title}} - Express MVC</title>
+  <meta name="description" content="{{meta.description}}">
+  <meta name="keywords" content="{{meta.keywords}}">
+  <!-- Favicons -->
+  <link href="/assets/img/branding/favicon.png" rel="icon">
+
+  <!-- ==== Open Graph tags === -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{meta.title}} - Express MVC" />
+  <meta property="og:description" content="{{meta.description}}" />
+  <meta property="og:image" content="{{meta.image}}" />
+
+  <link href="/assets/css/bootstrap.css" rel="stylesheet">
+  <link href="/assets-icons/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/font-awesome-4.7.0/css/font-awesome.min.css">
+
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
