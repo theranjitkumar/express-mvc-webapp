@@ -1,216 +1,300 @@
+const pageContent = `
+<main id="top">
+<section class="hero" aria-labelledby="hero-title">
+    <img class="hero-image" src="/assets/office-cleaning-hero.png"
+        alt="Professional cleaners maintaining a modern office">
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+        <p class="eyebrow">Office cleaning on demand</p>
+        <h1 id="hero-title">InstantOffice Safai for teams that cannot wait.</h1>
+        <p class="hero-copy">
+            Book trained cleaning crews for offices, coworking spaces, clinics, retail floors, and building common
+            areas.
+        </p>
+        <div class="hero-actions">
+            <a class="button primary" href="#book">Book safai</a>
+            <a class="button secondary" href="tel:+918130015121">Call support</a>
+        </div>
+        <div class="trust-strip" aria-label="Service highlights">
+            <span>Verified staff</span>
+            <span>Daily or one-time</span>
+            <span>GST-ready invoices</span>
+        </div>
+    </div>
+</section>
+
+<section class="section metrics" aria-label="SafaiBro service metrics">
+    <div>
+        <strong>30 min</strong>
+        <span>request callback target</span>
+    </div>
+    <div>
+        <strong>7 days</strong>
+        <span>office care coverage</span>
+    </div>
+    <div>
+        <strong>4.8/5</strong>
+        <span>pilot customer rating</span>
+    </div>
+    <div>
+        <strong>100%</strong>
+        <span>checklist-based work</span>
+    </div>
+</section>
+
+<section class="section split" id="services">
+    <div class="section-copy">
+        <p class="eyebrow">Services</p>
+        <h2>Everything an office needs to stay ready.</h2>
+        <p>
+            SafaiBro covers routine cleaning and urgent recovery work with transparent scopes, named supervisors,
+            and digital service logs.
+        </p>
+    </div>
+    <div class="service-grid" id="serviceGrid" aria-label="Available services"></div>
+</section>
+
+<section class="section plan-band" id="plans">
+    <div class="section-copy compact">
+        <p class="eyebrow">Plans</p>
+        <h2>Choose a schedule that fits your workplace.</h2>
+    </div>
+    <div class="plan-grid" id="planGrid" aria-label="Cleaning plans"></div>
+</section>
+
+<section class="section booking" id="book">
+    <div class="booking-panel">
+        <div class="booking-copy">
+            <p class="eyebrow">Book now</p>
+            <h2>Tell us the workplace. We will prepare the crew plan.</h2>
+            <p>
+                This form stores the request in the browser today and is ready to connect to a backend API when the
+                service goes live.
+            </p>
+        </div>
+        <form class="booking-form" id="bookingForm">
+            <label>
+                Company name
+                <input name="company" autocomplete="organization" placeholder="Acme Workspace" required>
+            </label>
+            <label>
+                Contact number
+                <input name="phone" inputmode="tel" autocomplete="tel" placeholder="+91 98765 43210" required>
+            </label>
+            <label>
+                City
+                <select name="city" required>
+                    <option value="">Select city</option>
+                    <option>Delhi NCR</option>
+                    <option>Mumbai</option>
+                    <option>Bengaluru</option>
+                    <option>Hyderabad</option>
+                    <option>Pune</option>
+                    <option>Chennai</option>
+                </select>
+            </label>
+            <label>
+                Office size
+                <select name="size" id="officeSize" required>
+                    <option value="small">Up to 2,000 sq ft</option>
+                    <option value="medium">2,000-7,500 sq ft</option>
+                    <option value="large">7,500-20,000 sq ft</option>
+                    <option value="enterprise">20,000+ sq ft</option>
+                </select>
+            </label>
+            <fieldset>
+                <legend>Required services</legend>
+                <div class="checkbox-grid" id="serviceOptions"></div>
+            </fieldset>
+            <label>
+                Preferred date
+                <input name="date" type="date" id="preferredDate" required>
+            </label>
+            <label class="time-field">
+                Preferred time
+                <select name="time" required>
+                    <option value="morning">Morning, 8 AM - 11 AM</option>
+                    <option value="afternoon">Afternoon, 12 PM - 3 PM</option>
+                    <option value="evening">Evening, 4 PM - 7 PM</option>
+                    <option value="night">After office hours</option>
+                </select>
+            </label>
+            <label class="full">
+                Notes
+                <textarea name="notes" rows="4"
+                    placeholder="Timing, floor count, access rules, or special cleaning needs"></textarea>
+            </label>
+            <div class="quote-box" aria-live="polite">
+                <span>Estimated first visit</span>
+                <strong id="quoteAmount">Rs 2,400</strong>
+            </div>
+            <button class="button primary full" type="submit">Request booking</button>
+            <p class="form-status" id="formStatus" role="status"></p>
+        </form>
+    </div>
+</section>
+
+<section class="section ops" id="ops">
+    <div class="ops-copy">
+        <p class="eyebrow">Operations</p>
+        <h2>Built for service teams, not just enquiries.</h2>
+        <p>
+            Leads, visit estimates, service scopes, and branch notes are kept in a small data layer so the next
+            version can connect payments, CRM, WhatsApp, or dispatch.
+        </p>
+    </div>
+    <div class="ops-board" aria-label="Operational workflow">
+        <article>
+            <span>01</span>
+            <h3>Request</h3>
+            <p>Capture company, city, office size, services, and preferred visit date.</p>
+        </article>
+        <article>
+            <span>02</span>
+            <h3>Confirm</h3>
+            <p>Supervisor reviews scope and locks crew size, consumables, and timing.</p>
+        </article>
+        <article>
+            <span>03</span>
+            <h3>Serve</h3>
+            <p>Checklist-driven safai with visit notes ready for customer reporting.</p>
+        </article>
+    </div>
+</section>
+
+<section class="section verification" id="register">
+    <div class="verification-copy">
+        <p class="eyebrow">Staff registration</p>
+        <h2>Verified SafaiBro partner onboarding.</h2>
+        <p>
+            Register cleaning staff with Aadhaar details, photo, and police verification status before they are sent
+            for admin approval.
+        </p>
+    </div>
+    <form class="verification-form" id="staffForm">
+        <label>
+            Full name
+            <input name="name" autocomplete="name" placeholder="Ramesh Kumar" required>
+        </label>
+        <label>
+            Mobile number
+            <input name="mobile" inputmode="tel" autocomplete="tel" placeholder="+91 98765 43210" required>
+        </label>
+        <label>
+            City / branch
+            <select name="branch" required>
+                <option value="">Select branch</option>
+                <option>Delhi NCR</option>
+                <option>Mumbai</option>
+                <option>Bengaluru</option>
+                <option>Hyderabad</option>
+                <option>Pune</option>
+                <option>Chennai</option>
+            </select>
+        </label>
+        <label>
+            Aadhaar number
+            <input name="aadhaar" inputmode="numeric" maxlength="14" placeholder="1234 5678 9012" required>
+        </label>
+        <label>
+            Police verification
+            <select name="policeStatus" required>
+                <option value="submitted">Submitted</option>
+                <option value="pending">Pending</option>
+                <option value="clear">Clear certificate received</option>
+            </select>
+        </label>
+        <label>
+            Police document
+            <input name="policeDocument" type="file" accept=".pdf,.jpg,.jpeg,.png">
+        </label>
+        <label class="full">
+            Staff photo
+            <input name="photo" type="file" accept="image/*" required>
+        </label>
+        <label class="full">
+            Address
+            <textarea name="address" rows="3" placeholder="House number, street, area, city, PIN code"
+                required></textarea>
+        </label>
+        <p class="privacy-note full">
+            Prototype note: Aadhaar is masked locally. Use a secure backend with encryption and access control
+            before collecting real identity documents.
+        </p>
+        <button class="button primary full" type="submit">Send for admin approval</button>
+        <p class="form-status" id="staffStatus" role="status"></p>
+    </form>
+</section>
+
+<section class="section admin-panel" id="admin">
+    <div class="section-copy compact">
+        <p class="eyebrow">Admin approval</p>
+        <h2>Review registered staff before assigning work.</h2>
+    </div>
+    <div class="admin-toolbar" aria-label="Admin registration filters">
+        <button class="filter-button active" type="button" data-filter="all">All</button>
+        <button class="filter-button" type="button" data-filter="pending">Pending</button>
+        <button class="filter-button" type="button" data-filter="approved">Approved</button>
+        <button class="filter-button" type="button" data-filter="rejected">Rejected</button>
+    </div>
+    <div class="admin-list" id="adminList" aria-live="polite"></div>
+</section>
+</main>
+`
+
 module.exports = [
     {
         id: 1,
-        title: "Web Development",
-        slug: "web-development",
-        icon: "bi bi-code-slash",
-        thumbnail: "/assets/img/web-development.png",
-        image: "/assets/img/web-development.png",
-        shortDesc: "Custom, scalable and responsive websites tailored to your business needs.",
-        description: "We build high-performance websites using modern technologies like Angular, React, Node.js, and more. Our solutions are SEO-friendly, fast, and secure.",
+        title: "Office cleaning",
+        slug: "office-cleaning",
+        icon: "bi bi-broom",
+        thumbnail: "/assets/clinic-retail-cleaning.png",
+        image: "/assets/clinic-retail-cleaning.png",
+        shortDesc: "Professional office cleaning services to keep your workspace spotless and healthy.",
+        description: "We provide professional office cleaning services to keep your workspace spotless and healthy. Our team uses eco-friendly products and modern techniques to ensure a clean and safe environment.",
         keywords: [
-            "web development company",
-            "website development services",
-            "custom website development",
-            "responsive web design",
-            "Express MVCs global web services"
+            "Office cleaning services",
+            "professional office cleaning",
+            "commercial cleaning services",
+            "office maintenance",
+            "cleaning services"
         ],
-        detailsPageContent: `
-         <div class="row align-items-center mb-5">
-                <div class="col">
-                    <p>
-                        At <strong>Express MVCs Global</strong>, we specialize in delivering custom web development solutions
-                        that are fast, secure, and scalable. Whether you need a business website, web application, or
-                        enterprise solution, our team ensures top-notch performance and modern design.
-                    </p>
-                    <p>
-                        We use cutting-edge technologies like Angular, React, Node.js, and modern frameworks to build
-                        responsive and SEO-friendly websites.
-                    </p>
-                </div>
-            </div>
-
-            <div class="mb-5">
-                <h2 class="text-center mb-4">What We Offer</h2>
-                <div class="row text-center">
-                    <div class="col-md-4 mb-4">
-                        <i class="bi bi-phone display-6 text-primary"></i>
-                        <h5 class="mt-2">Responsive Design</h5>
-                        <p>Mobile-friendly and fully responsive websites for all devices.</p>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <i class="bi bi-speedometer2 display-6 text-primary"></i>
-                        <h5 class="mt-2">High Performance</h5>
-                        <p>Fast loading websites optimized for speed and performance.</p>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <i class="bi bi-shield-check display-6 text-primary"></i>
-                        <h5 class="mt-2">Secure Development</h5>
-                        <p>Security best practices to protect your data and users.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mb-5">
-                <h2 class="text-center mb-4">Technologies We Use</h2>
-                <div class="row text-center">
-                    <div class="col-md-3 mb-3"><span class="badge bg-dark p-2">Angular</span></div>
-                    <div class="col-md-3 mb-3"><span class="badge bg-dark p-2">React</span></div>
-                    <div class="col-md-3 mb-3"><span class="badge bg-dark p-2">Node.js</span></div>
-                    <div class="col-md-3 mb-3"><span class="badge bg-dark p-2">Express.js</span></div>
-                    <div class="col-md-3 mb-3"><span class="badge bg-dark p-2">MongoDB</span></div>
-                    <div class="col-md-3 mb-3"><span class="badge bg-dark p-2">MySQL</span></div>
-                </div>
-            </div>
-
-            <div class="mb-5">
-                <h2 class="text-center mb-4">Our Development Process</h2>
-                <div class="row text-center">
-                    <div class="col-md-3">
-                        <h5>1. Requirement</h5>
-                        <p>Understanding your business needs and goals.</p>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>2. Design</h5>
-                        <p>Creating intuitive UI/UX designs.</p>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>3. Development</h5>
-                        <p>Building scalable and robust applications.</p>
-                    </div>
-                    <div class="col-md-3">
-                        <h5>4. Deployment</h5>
-                        <p>Testing and launching your project successfully.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center bg-light p-5 rounded">
-                <h3>Ready to Build Your Website?</h3>
-                <p>Let’s turn your idea into a powerful digital solution.</p>
-                <a href="/contact" class="btn btn-primary px-4">Get a Free Quote</a>
-            </div>
-        `
+        pageContent: pageContent
     },
     {
-        id: 5,
-        title: "Digital Marketing",
-        slug: "digital-marketing",
-        icon: "bi bi-graph-up-arrow",
-        thumbnail: "/assets/img/digital-marketing.png",
-        image: "/assets/img/digital-marketing.png",
-        shortDesc: "Grow your business with result-driven digital strategies.",
-        description: "We offer SEO, social media marketing, PPC, and content marketing to increase your visibility and generate leads.",
+        id: 2,
+        title: "Carpet cleaning",
+        slug: "carpet-cleaning",
+        icon: "bi bi-brush",
+        thumbnail: "/assets/washroom-care.png",
+        image: "/assets/washroom-care.png",
+        shortDesc: "Expert carpet cleaning services to remove stains, dirt, and allergens from your carpets.",
+        description: "Our expert carpet cleaning services remove stains, dirt, and allergens from your carpets. We use advanced equipment and safe cleaning solutions to restore the beauty and freshness of your carpets.",
         keywords: [
-            "digital marketing company",
-            "online marketing services provider",
-            "social media marketing company",
-            "Express MVCs global digital marketing company"
+            "Carpet cleaning services",
+            "professional carpet cleaning",
+            "stain removal",
+            "allergen removal",
+            "carpet maintenance"
         ],
-        detailsPageContent: `
-         <div class="row align-items-center mb-5">
-            <div class="col">
-                <h2>Boost Your Online Presence</h2>
-                <p>
-                    At <strong>Express MVCs Global</strong>, we provide result-oriented digital marketing services to help
-                    businesses increase visibility, generate leads, and maximize ROI. Our strategies are tailored to your
-                    business goals and target audience.
-                </p>
-                <p>
-                    From SEO and social media marketing to paid ads and content marketing, we ensure your brand stands out
-                    in the competitive digital landscape.
-                </p>
-            </div>
-        </div>
-
-        <div class="mb-5">
-            <h2 class="text-center mb-4">Our Digital Marketing Services</h2>
-            <div class="row text-center">
-
-                <div class="col-md-3 mb-4">
-                    <i class="bi bi-search display-6 text-primary"></i>
-                    <h5 class="mt-2">Search Engine Optimization (SEO)</h5>
-                    <p>Improve your rankings and drive organic traffic to your website.</p>
-                </div>
-
-                <div class="col-md-3 mb-4">
-                    <i class="bi bi-megaphone display-6 text-primary"></i>
-                    <h5 class="mt-2">Social Media Marketing</h5>
-                    <p>Engage your audience and build brand awareness on social platforms.</p>
-                </div>
-
-                <div class="col-md-3 mb-4">
-                    <i class="bi bi-cash-coin display-6 text-primary"></i>
-                    <h5 class="mt-2">Pay-Per-Click (PPC)</h5>
-                    <p>Run high-converting ad campaigns on Google and social media.</p>
-                </div>
-
-                <div class="col-md-3 mb-4">
-                    <i class="bi bi-pencil-square display-6 text-primary"></i>
-                    <h5 class="mt-2">Content Marketing</h5>
-                    <p>Create valuable content that attracts and converts customers.</p>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="mb-5">
-            <h2 class="text-center mb-4">Why Choose Us?</h2>
-            <div class="row text-center">
-
-                <div class="col-md-4">
-                    <i class="bi bi-bar-chart-line display-6 text-primary"></i>
-                    <h5>Data-Driven Strategy</h5>
-                    <p>We use analytics and insights to optimize campaigns for maximum ROI.</p>
-                </div>
-
-                <div class="col-md-4">
-                    <i class="bi bi-people display-6 text-primary"></i>
-                    <h5>Targeted Audience</h5>
-                    <p>Reach the right audience with precision targeting and segmentation.</p>
-                </div>
-
-                <div class="col-md-4">
-                    <i class="bi bi-lightning-charge display-6 text-primary"></i>
-                    <h5>Fast Results</h5>
-                    <p>Quick implementation with measurable improvements in performance.</p>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="mb-5">
-            <h2 class="text-center mb-4">Our Process</h2>
-            <div class="row text-center">
-
-                <div class="col-md-3">
-                    <h5>1. Research</h5>
-                    <p>Understand your market and competitors.</p>
-                </div>
-
-                <div class="col-md-3">
-                    <h5>2. Strategy</h5>
-                    <p>Create a customized marketing plan.</p>
-                </div>
-
-                <div class="col-md-3">
-                    <h5>3. Execution</h5>
-                    <p>Launch campaigns across channels.</p>
-                </div>
-
-                <div class="col-md-3">
-                    <h5>4. Optimization</h5>
-                    <p>Continuously improve performance and ROI.</p>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="text-center bg-light p-5 rounded">
-            <h3>Ready to Grow Your Business?</h3>
-            <p>Let’s create a powerful digital marketing strategy for your brand.</p>
-            <a href="/contact" class="btn btn-primary px-4">Get Free Consultation</a>
-        </div>
-        `
+        pageContent: pageContent
+    },
+    {
+        id: 3,
+        title: "Window cleaning",
+        slug: "window-cleaning",
+        icon: "bi bi-window",
+        thumbnail: "/assets/common-area-cleaning.png",
+        image: "/assets/common-area-cleaning.png",
+        shortDesc: "Professional window cleaning services to keep your windows sparkling and clear.",
+        description: "Our professional window cleaning services keep your windows sparkling and clear. We use streak-free techniques and eco-friendly products to ensure a spotless finish for both interior and exterior windows.",
+        keywords: [
+            "Window cleaning services",
+            "professional window cleaning",
+            "streak-free window cleaning",
+            "eco-friendly window cleaning",
+            "residential and commercial window cleaning"
+        ],
+        pageContent: pageContent
     }
 ];

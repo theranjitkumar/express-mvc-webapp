@@ -11,22 +11,9 @@ var router = express.Router();
 router.get('/', function (req, res, next) {
   res.render('index', {
     title: 'Home',
-    meta: meta.about,
+    meta: meta.home,
+    services,
     year: new Date().getFullYear()
-  });
-});
-
-router.get('/about', function (req, res, next) {
-  res.render('about', {
-    title: 'About',
-    meta: meta.about,
-  });
-});
-
-router.get('/contact', function (req, res, next) {
-  res.render('contact', {
-    title: 'Contact',
-    meta: meta.contact,
   });
 });
 
@@ -54,10 +41,7 @@ router.get('/services/:slug', (req, res) => {
     keywords: service.keywords.join(', '),
   };
 
-  res.render(`services/${slug}`, {
-    service: service,
-    meta: meta,
-  });
+  res.render(`service-details`, { meta, service });
 });
 
 router.get('/services/:serviceSlug/:location', (req, res) => {

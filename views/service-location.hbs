@@ -1,24 +1,8 @@
-<div class="container my-5">
-
-    <h1>{{service.title}} in {{location}}</h1>
-
-    <p>
-        Express MVCs Global offers the best {{service.title}} services in {{location}}.
-        We provide scalable, affordable, and high-quality solutions.
-    </p>
-
-    <img src="{{service.thumbnail}}" class="img-fluid my-3" alt="{{service.title}}">
-
-    <h2>Why Choose Us in {{location}}?</h2>
-    <ul>
-        <li>Expert team</li>
-        <li>Affordable pricing</li>
-        <li>Fast delivery</li>
-    </ul>
-
-    <h2>Our {{service.title}} Services in {{location}}</h2>
+<div class="container my-5">    
     <div>
-        {{{service.detailsPageContent}}}
+        {{!-- <img src="{{service.thumbnail}}" class="img-fluid my-3" alt="{{service.title}}"> --}}
+        {{!-- <h2>Our {{service.title}} Services in {{location}}</h2> --}}
+        {{{service.pageContent}}}
     </div>
 
 </div>
