@@ -25,7 +25,7 @@ router.get('/services', (req, res, next) => {
   });
 });
 
-router.get('/services/:slug', (req, res) => {
+router.get('/:slug', (req, res) => {
   const slug = req.params.slug;
 
   const service = services.find(s => s.slug === slug);
@@ -41,10 +41,10 @@ router.get('/services/:slug', (req, res) => {
     keywords: service.keywords.join(', '),
   };
 
-  res.render(`service-details`, { meta, service });
+  res.render(`service-location`, { meta, service });
 });
 
-router.get('/services/:serviceSlug/:location', (req, res) => {
+router.get('/:serviceSlug/:location', (req, res) => {
 
   const { serviceSlug, location } = req.params;
 
@@ -82,8 +82,6 @@ router.get('/sitemap.xml', async (req, res) => {
 
   // ✅ 1. Static pages
   smStream.write({ url: '/' });
-  smStream.write({ url: '/about' });
-  smStream.write({ url: '/contact' });
   smStream.write({ url: '/services' });
 
   // ✅ 2. Dynamic pages

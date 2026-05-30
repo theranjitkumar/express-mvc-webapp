@@ -1,8 +1,287 @@
-<div class="container my-5">    
-    <div>
-        {{!-- <img src="{{service.thumbnail}}" class="img-fluid my-3" alt="{{service.title}}"> --}}
-        {{!-- <h2>Our {{service.title}} Services in {{location}}</h2> --}}
-        {{{service.pageContent}}}
-    </div>
+<header class="site-header">
+    <a class="brand" href="#top" aria-label="SafaiBro home">
+        <img class="brand-logo" src="/assets/safaibro-logo.png" alt="SafaiBro.com Professional Cleaning Services">
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#plans">Plans</a>
+        <a href="#book">Book</a>
+        <a href="#register">Register</a>
+        <a href="#admin">Admin</a>
+        <a href="#ops">Ops</a>
+    </nav>
+    <a class="header-action" href="#book">Get quote</a>
+</header>
+<main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+        <img class="hero-image" src="/assets/office-cleaning-hero.png"
+            alt="Professional cleaners maintaining a modern office">
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-content">
+            <p class="eyebrow">Office cleaning on demand</p>
+            <h1 id="hero-title">InstantOffice Safai for teams that cannot wait.</h1>
+            <p class="hero-copy">
+                Book trained cleaning crews for offices, coworking spaces, clinics, retail floors, and building common
+                areas.
+            </p>
+            <div class="hero-actions">
+                <a class="button primary" href="#book">Book safai</a>
+                <a class="button secondary" href="tel:+918130015121">Call support</a>
+            </div>
+            <div class="trust-strip" aria-label="Service highlights">
+                <span>Verified staff</span>
+                <span>Daily or one-time</span>
+                <span>GST-ready invoices</span>
+            </div>
+        </div>
+    </section>
 
-</div>
+    <section class="section metrics" aria-label="SafaiBro service metrics">
+        <div>
+            <strong>30 min</strong>
+            <span>request callback target</span>
+        </div>
+        <div>
+            <strong>7 days</strong>
+            <span>office care coverage</span>
+        </div>
+        <div>
+            <strong>4.8/5</strong>
+            <span>pilot customer rating</span>
+        </div>
+        <div>
+            <strong>100%</strong>
+            <span>checklist-based work</span>
+        </div>
+    </section>
+
+    <section class="section split" id="services">
+        <div class="section-copy">
+            <p class="eyebrow">Services</p>
+            <h2>Everything an office needs to stay ready.</h2>
+            <p>
+                SafaiBro covers routine cleaning and urgent recovery work with transparent scopes, named supervisors,
+                and digital service logs.
+            </p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+            {{#each services}}
+            <div
+                style="border: 1px solid #ddd; border-radius: 10px; padding: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;">
+
+                <img src="{{this.thumbnail}}" alt="{{this.title}}"
+                    style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+
+                <h3 style="margin: 15px 0 10px; font-size: 20px;">
+                    {{this.title}}
+                </h3>
+
+                <p style="font-size: 14px; color: #555;">
+                    {{this.description}}
+                </p>
+
+                <a href="/{{this.slug}}"
+                    style="display: inline-block; margin-top: 10px; padding: 8px 15px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">
+                    Read More
+                </a>
+
+            </div>
+            {{/each}}
+        </div>
+        {{!-- <div class="service-grid" id="serviceGrid" aria-label="Available services"></div> --}}
+    </section>
+
+    <section class="section plan-band" id="plans">
+        <div class="section-copy compact">
+            <p class="eyebrow">Plans</p>
+            <h2>Choose a schedule that fits your workplace.</h2>
+        </div>
+        <div class="plan-grid" id="planGrid" aria-label="Cleaning plans"></div>
+    </section>
+
+    <section class="section booking" id="book">
+        <div class="booking-panel">
+            <div class="booking-copy">
+                <p class="eyebrow">Book now</p>
+                <h2>Tell us the workplace. We will prepare the crew plan.</h2>
+                <p>
+                    This form stores the request in the browser today and is ready to connect to a backend API when the
+                    service goes live.
+                </p>
+            </div>
+            <form class="booking-form" id="bookingForm">
+                <label>
+                    Company name
+                    <input name="company" autocomplete="organization" placeholder="Acme Workspace" required>
+                </label>
+                <label>
+                    Contact number
+                    <input name="phone" inputmode="tel" autocomplete="tel" placeholder="+91 98765 43210" required>
+                </label>
+                <label>
+                    City
+                    <select name="city" required>
+                        <option value="">Select city</option>
+                        <option>Delhi NCR</option>
+                        <option>Mumbai</option>
+                        <option>Bengaluru</option>
+                        <option>Hyderabad</option>
+                        <option>Pune</option>
+                        <option>Chennai</option>
+                    </select>
+                </label>
+                <label>
+                    Office size
+                    <select name="size" id="officeSize" required>
+                        <option value="small">Up to 2,000 sq ft</option>
+                        <option value="medium">2,000-7,500 sq ft</option>
+                        <option value="large">7,500-20,000 sq ft</option>
+                        <option value="enterprise">20,000+ sq ft</option>
+                    </select>
+                </label>
+                <fieldset>
+                    <legend>Required services</legend>
+                    <div class="checkbox-grid" id="serviceOptions"></div>
+                </fieldset>
+                <label>
+                    Preferred date
+                    <input name="date" type="date" id="preferredDate" required>
+                </label>
+                <label class="time-field">
+                    Preferred time
+                    <select name="time" required>
+                        <option value="morning">Morning, 8 AM - 11 AM</option>
+                        <option value="afternoon">Afternoon, 12 PM - 3 PM</option>
+                        <option value="evening">Evening, 4 PM - 7 PM</option>
+                        <option value="night">After office hours</option>
+                    </select>
+                </label>
+                <label class="full">
+                    Notes
+                    <textarea name="notes" rows="4"
+                        placeholder="Timing, floor count, access rules, or special cleaning needs"></textarea>
+                </label>
+                <div class="quote-box" aria-live="polite">
+                    <span>Estimated first visit</span>
+                    <strong id="quoteAmount">Rs 2,400</strong>
+                </div>
+                <button class="button primary full" type="submit">Request booking</button>
+                <p class="form-status" id="formStatus" role="status"></p>
+            </form>
+        </div>
+    </section>
+
+    <section class="section ops" id="ops">
+        <div class="ops-copy">
+            <p class="eyebrow">Operations</p>
+            <h2>Built for service teams, not just enquiries.</h2>
+            <p>
+                Leads, visit estimates, service scopes, and branch notes are kept in a small data layer so the next
+                version can connect payments, CRM, WhatsApp, or dispatch.
+            </p>
+        </div>
+        <div class="ops-board" aria-label="Operational workflow">
+            <article>
+                <span>01</span>
+                <h3>Request</h3>
+                <p>Capture company, city, office size, services, and preferred visit date.</p>
+            </article>
+            <article>
+                <span>02</span>
+                <h3>Confirm</h3>
+                <p>Supervisor reviews scope and locks crew size, consumables, and timing.</p>
+            </article>
+            <article>
+                <span>03</span>
+                <h3>Serve</h3>
+                <p>Checklist-driven safai with visit notes ready for customer reporting.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="section verification" id="register">
+        <div class="verification-copy">
+            <p class="eyebrow">Staff registration</p>
+            <h2>Verified SafaiBro partner onboarding.</h2>
+            <p>
+                Register cleaning staff with Aadhaar details, photo, and police verification status before they are sent
+                for admin approval.
+            </p>
+        </div>
+        <form class="verification-form" id="staffForm">
+            <label>
+                Full name
+                <input name="name" autocomplete="name" placeholder="Ramesh Kumar" required>
+            </label>
+            <label>
+                Mobile number
+                <input name="mobile" inputmode="tel" autocomplete="tel" placeholder="+91 98765 43210" required>
+            </label>
+            <label>
+                City / branch
+                <select name="branch" required>
+                    <option value="">Select branch</option>
+                    <option>Delhi NCR</option>
+                    <option>Mumbai</option>
+                    <option>Bengaluru</option>
+                    <option>Hyderabad</option>
+                    <option>Pune</option>
+                    <option>Chennai</option>
+                </select>
+            </label>
+            <label>
+                Aadhaar number
+                <input name="aadhaar" inputmode="numeric" maxlength="14" placeholder="1234 5678 9012" required>
+            </label>
+            <label>
+                Police verification
+                <select name="policeStatus" required>
+                    <option value="submitted">Submitted</option>
+                    <option value="pending">Pending</option>
+                    <option value="clear">Clear certificate received</option>
+                </select>
+            </label>
+            <label>
+                Police document
+                <input name="policeDocument" type="file" accept=".pdf,.jpg,.jpeg,.png">
+            </label>
+            <label class="full">
+                Staff photo
+                <input name="photo" type="file" accept="image/*" required>
+            </label>
+            <label class="full">
+                Address
+                <textarea name="address" rows="3" placeholder="House number, street, area, city, PIN code"
+                    required></textarea>
+            </label>
+            <p class="privacy-note full">
+                Prototype note: Aadhaar is masked locally. Use a secure backend with encryption and access control
+                before collecting real identity documents.
+            </p>
+            <button class="button primary full" type="submit">Send for admin approval</button>
+            <p class="form-status" id="staffStatus" role="status"></p>
+        </form>
+    </section>
+
+    <section class="section admin-panel" id="admin">
+        <div class="section-copy compact">
+            <p class="eyebrow">Admin approval</p>
+            <h2>Review registered staff before assigning work.</h2>
+        </div>
+        <div class="admin-toolbar" aria-label="Admin registration filters">
+            <button class="filter-button active" type="button" data-filter="all">All</button>
+            <button class="filter-button" type="button" data-filter="pending">Pending</button>
+            <button class="filter-button" type="button" data-filter="approved">Approved</button>
+            <button class="filter-button" type="button" data-filter="rejected">Rejected</button>
+        </div>
+        <div class="admin-list" id="adminList" aria-live="polite"></div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <img class="footer-logo" src="/assets/safaibro-logo.png" alt="SafaiBro.com Professional Cleaning Services">
+    <div class="footer-links">
+        <a href="mailto:hello@safaibro.com">hello@safaibro.com</a>
+        <a href="tel:+919999999999">+91 8130015121</a>
+    </div>
+</footer>

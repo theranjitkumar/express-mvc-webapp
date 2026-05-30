@@ -1,3 +1,17 @@
+<header class="site-header">
+    <a class="brand" href="#top" aria-label="SafaiBro home">
+        <img class="brand-logo" src="/assets/safaibro-logo.png" alt="SafaiBro.com Professional Cleaning Services">
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#plans">Plans</a>
+        <a href="#book">Book</a>
+        <a href="#register">Register</a>
+        <a href="#admin">Admin</a>
+        <a href="#ops">Ops</a>
+    </nav>
+    <a class="header-action" href="#book">Get quote</a>
+</header>
 <main id="top">
     <section class="hero" aria-labelledby="hero-title">
         <img class="hero-image" src="/assets/office-cleaning-hero.png"
@@ -66,7 +80,7 @@
                     {{this.description}}
                 </p>
 
-                <a href="/services/{{this.slug}}"
+                <a href="/{{this.slug}}"
                     style="display: inline-block; margin-top: 10px; padding: 8px 15px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">
                     Read More
                 </a>
@@ -263,3 +277,11 @@
         <div class="admin-list" id="adminList" aria-live="polite"></div>
     </section>
 </main>
+
+<footer class="site-footer">
+    <img class="footer-logo" src="/assets/safaibro-logo.png" alt="SafaiBro.com Professional Cleaning Services">
+    <div class="footer-links">
+        <a href="mailto:hello@safaibro.com">hello@safaibro.com</a>
+        <a href="tel:+919999999999">+91 8130015121</a>
+    </div>
+</footer>
